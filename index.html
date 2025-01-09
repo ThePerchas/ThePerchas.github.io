@@ -1,9 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>My Site!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+        .puzzle {
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .success {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Si lees esto me debes un cafe</h1>
+
+    <h1>Welcome to the Escape Room!</h1>
+    <p>Can you solve all the puzzles and escape?</p>
+
+    <div id="puzzle1" class="puzzle">
+        <h3>Puzzle 1: What is 5 + 3?</h3>
+        <input type="number" id="answer1" placeholder="Enter your answer">
+        <button onclick="checkAnswer(1)">Check Answer</button>
+        <p id="feedback1" class="hidden">Correct! You solved this one!</p>
+    </div>
+
+    <div id="puzzle2" class="puzzle hidden">
+        <h3>Puzzle 2: What color do you get by mixing red and blue?</h3>
+        <input type="text" id="answer2" placeholder="Enter your answer">
+        <button onclick="checkAnswer(2)">Check Answer</button>
+        <p id="feedback2" class="hidden">Correct! Now let's move on!</p>
+    </div>
+
+    <div id="puzzle3" class="puzzle hidden">
+        <h3>Puzzle 3: What is the capital of France?</h3>
+        <input type="text" id="answer3" placeholder="Enter your answer">
+        <button onclick="checkAnswer(3)">Check Answer</button>
+        <p id="feedback3" class="hidden">Correct! You've solved this puzzle!</p>
+    </div>
+
+    <div id="success" class="hidden success">
+        Congratulations! You've escaped the room!
+    </div>
+
+    <script>
+        function checkAnswer(puzzleNumber) {
+            if (puzzleNumber === 1) {
+                let answer = document.getElementById('answer1').value;
+                if (parseInt(answer) === 8) {
+                    document.getElementById('feedback1').classList.remove('hidden');
+                    document.getElementById('puzzle2').classList.remove('hidden');
+                }
+            }
+            if (puzzleNumber === 2) {
+                let answer = document.getElementById('answer2').value.toLowerCase();
+                if (answer === 'purple') {
+                    document.getElementById('feedback2').classList.remove('hidden');
+                    document.getElementById('puzzle3').classList.remove('hidden');
+                }
+            }
+            if (puzzleNumber === 3) {
+                let answer = document.getElementById('answer3').value.toLowerCase();
+                if (answer === 'paris') {
+                    document.getElementById('feedback3').classList.remove('hidden');
+                    document.getElementById('success').classList.remove('hidden');
+                }
+            }
+        }
+    </script>
+
 </body>
 </html>
