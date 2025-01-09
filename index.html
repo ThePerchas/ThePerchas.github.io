@@ -41,6 +41,11 @@
             border-radius: 5px;
             font-size: 18px;
         }
+        .image {
+            width: 80%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -49,24 +54,30 @@
     <p>Can you solve all the puzzles and escape?</p>
 
     <div id="puzzle1" class="puzzle">
-        <h3>Puzzle 1: What is 5 + 3?</h3>
-        <input type="number" id="answer1" placeholder="Enter your answer">
-        <button onclick="checkAnswer(1)">Check Answer</button>
-        <p id="feedback1" class="hidden">Correct! You solved this one!</p>
+        <h3>You've found a locked box! The combination is hidden somewhere...</h3>
+        <p>Look around the room for a clue!</p>
+        <img src="https://via.placeholder.com/300" alt="Mysterious locked box" class="image">
+        <p>Hint: The box might have a clue related to a number. Click the button when you think you've figured it out.</p>
+        <button onclick="revealClue(1)">Reveal Clue</button>
+        <p id="feedback1" class="hidden">The clue is a simple number: 8!</p>
     </div>
 
     <div id="puzzle2" class="puzzle hidden">
-        <h3>Puzzle 2: What color do you get by mixing red and blue?</h3>
-        <input type="text" id="answer2" placeholder="Enter your answer">
-        <button onclick="checkAnswer(2)">Check Answer</button>
-        <p id="feedback2" class="hidden">Correct! Now let's move on!</p>
+        <h3>You've unlocked the box and found a strange key. It has symbols on it.</h3>
+        <p>What do these symbols mean? Try interacting with them!</p>
+        <img src="https://via.placeholder.com/300" alt="Strange key" class="image">
+        <p>Hint: The symbols represent something commonly found in the color spectrum.</p>
+        <button onclick="revealKey(1)">Reveal Key's Secret</button>
+        <p id="feedback2" class="hidden">The key's secret: The color purple!</p>
     </div>
 
     <div id="puzzle3" class="puzzle hidden">
-        <h3>Puzzle 3: What is the capital of France?</h3>
-        <input type="text" id="answer3" placeholder="Enter your answer">
-        <button onclick="checkAnswer(3)">Check Answer</button>
-        <p id="feedback3" class="hidden">Correct! You've solved this puzzle!</p>
+        <h3>You've found a strange locked door. There's a keypad with colored buttons. The key you found earlier may help!</h3>
+        <p>Enter the correct color combination to unlock the door.</p>
+        <button onclick="enterCombination('purple')">Enter Purple</button>
+        <button onclick="enterCombination('blue')">Enter Blue</button>
+        <button onclick="enterCombination('red')">Enter Red</button>
+        <p id="feedback3" class="hidden">Correct! The door is unlocked and you've escaped!</p>
     </div>
 
     <div id="success" class="hidden success">
@@ -74,27 +85,26 @@
     </div>
 
     <script>
-        function checkAnswer(puzzleNumber) {
+        function revealClue(puzzleNumber) {
             if (puzzleNumber === 1) {
-                let answer = document.getElementById('answer1').value;
-                if (parseInt(answer) === 8) {
-                    document.getElementById('feedback1').classList.remove('hidden');
-                    document.getElementById('puzzle2').classList.remove('hidden');
-                }
+                document.getElementById('feedback1').classList.remove('hidden');
+                document.getElementById('puzzle2').classList.remove('hidden');
             }
-            if (puzzleNumber === 2) {
-                let answer = document.getElementById('answer2').value.toLowerCase();
-                if (answer === 'purple') {
-                    document.getElementById('feedback2').classList.remove('hidden');
-                    document.getElementById('puzzle3').classList.remove('hidden');
-                }
+        }
+
+        function revealKey(puzzleNumber) {
+            if (puzzleNumber === 1) {
+                document.getElementById('feedback2').classList.remove('hidden');
+                document.getElementById('puzzle3').classList.remove('hidden');
             }
-            if (puzzleNumber === 3) {
-                let answer = document.getElementById('answer3').value.toLowerCase();
-                if (answer === 'paris') {
-                    document.getElementById('feedback3').classList.remove('hidden');
-                    document.getElementById('success').classList.remove('hidden');
-                }
+        }
+
+        function enterCombination(color) {
+            if (color === 'purple') {
+                document.getElementById('feedback3').classList.remove('hidden');
+                document.getElementById('success').classList.remove('hidden');
+            } else {
+                alert("Wrong combination! Try again.");
             }
         }
     </script>
