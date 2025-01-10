@@ -48,6 +48,7 @@
     <h1>Welcome to the Code Breaker Escape Room!</h1>
     <p>Can you decipher the codes to escape?</p>
 
+    <!-- Puzzle 1 -->
     <div id="puzzle1" class="puzzle">
         <h3>Puzzle 1: Morse Code</h3>
         <p>Here's a Morse code message. Can you decipher it?</p>
@@ -57,7 +58,7 @@
         <p id="feedback1" class="hidden">Correct! The message is: HELLO THERE.</p>
     </div>
 
-
+    <!-- Success Message -->
     <div id="success" class="hidden success">
         Congratulations! You've solved all the codes and escaped!
     </div>
@@ -67,12 +68,11 @@
             let answer = document.getElementById('morseAnswer').value.toUpperCase();
             if (answer === "HELLO THERE") {
                 document.getElementById('feedback1').classList.remove('hidden');
-                document.getElementById('puzzle2').classList.remove('hidden');
+                document.getElementById('success').classList.remove('hidden');
             } else {
                 alert("Incorrect! Try again.");
             }
         }
-
     </script>
 
 </body>
