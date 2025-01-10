@@ -57,23 +57,6 @@
         <p id="feedback1" class="hidden">Correct! The message is: HELLO THERE.</p>
     </div>
 
-    <div id="puzzle2" class="puzzle hidden">
-        <h3>Puzzle 2: Caesar Cipher</h3>
-        <p>This is a Caesar Cipher with a shift of 3. Can you decode it?</p>
-        <pre>Khoor Zruog</pre>
-        <input type="text" id="caesarAnswer" placeholder="Enter your answer">
-        <button onclick="checkCaesarCipher()">Check Answer</button>
-        <p id="feedback2" class="hidden">Correct! The message is: Hello World.</p>
-    </div>
-
-    <div id="puzzle3" class="puzzle hidden">
-        <h3>Puzzle 3: Reverse Cipher</h3>
-        <p>This message has been reversed. Can you decode it?</p>
-        <pre>!dlrow ,olleH</pre>
-        <input type="text" id="reverseAnswer" placeholder="Enter your answer">
-        <button onclick="checkReverseCipher()">Check Answer</button>
-        <p id="feedback3" class="hidden">Correct! The message is: Hello, world!</p>
-    </div>
 
     <div id="success" class="hidden success">
         Congratulations! You've solved all the codes and escaped!
@@ -90,25 +73,6 @@
             }
         }
 
-        function checkCaesarCipher() {
-            let answer = document.getElementById('caesarAnswer').value.toUpperCase();
-            if (answer === "HELLO WORLD") {
-                document.getElementById('feedback2').classList.remove('hidden');
-                document.getElementById('puzzle3').classList.remove('hidden');
-            } else {
-                alert("Incorrect! Try again.");
-            }
-        }
-
-        function checkReverseCipher() {
-            let answer = document.getElementById('reverseAnswer').value;
-            if (answer === "Hello, world!") {
-                document.getElementById('feedback3').classList.remove('hidden');
-                document.getElementById('success').classList.remove('hidden');
-            } else {
-                alert("Incorrect! Try again.");
-            }
-        }
     </script>
 
 </body>
